@@ -1,0 +1,33 @@
+class Solution {
+    public int[][] generateMatrix(int n) {
+     int sum=1;;
+     int[][] ans=new int[n][n];
+     int srow=0;
+     int scol=0;
+     int erow=n-1;
+     int ecol=n-1;
+     while(srow<=erow && scol<=ecol){
+        for(int i=scol;i<=ecol;i++){
+            ans[srow][i]=sum;
+            sum++;
+        }
+        srow++;
+        for(int i=srow;i<=erow;i++){
+            ans[i][ecol]=sum;
+            sum++;
+        }
+        ecol--;
+        for(int i=ecol;i>=scol;i--){
+            ans[erow][i]=sum;
+            sum++;
+        }
+        erow--;
+        for(int i=erow;i>=srow;i--){
+            ans[i][scol]=sum;
+            sum++;
+        }
+        scol++;
+     } 
+     return ans;  
+    }
+}
