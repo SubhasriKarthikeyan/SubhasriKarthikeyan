@@ -1,0 +1,18 @@
+class Solution {
+    public int countDistinctIntegers(int[] nums) {
+      HashMap<Integer,Integer> map=new HashMap<>();
+      for(int i=0;i<nums.length;i++){
+        if(!map.containsKey(nums[i]))
+            map.put(nums[i],1);
+      } 
+      for(int i=0;i<nums.length;i++){
+        String original = Integer.toString(nums[i]);
+        StringBuilder sb = new StringBuilder(original);
+        String reversed = sb.reverse().toString();
+        int n=Integer.parseInt(reversed);
+        if(!map.containsKey(n))
+            map.put(n,1);
+      } 
+      return map.size();
+    }
+}
