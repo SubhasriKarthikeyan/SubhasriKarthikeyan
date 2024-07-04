@@ -1,0 +1,21 @@
+class Solution {
+    public String makeSmallestPalindrome(String s) {
+      int ans=0;
+      int i=0;
+      int j=s.length()-1;
+      char ch[]=s.toCharArray();
+      while(i<j){
+        if(ch[i]!=ch[j]){
+            if(ch[i]>ch[j])
+                ch[i]=ch[j];
+            else
+                ch[j]=ch[i];
+        }
+            
+        i++;
+        j--;
+      }
+      String str=new String(ch);
+      return str;  
+    }
+}
