@@ -1,0 +1,39 @@
+class Solution{
+    public static int[] maxSlidingWindow(int[] nums, int k) {
+        if (nums == null || nums.length == 0) {
+            return new int[0];
+        }
+
+        Deque<Integer> deque = new LinkedList<>();
+        List<Integer> result = new ArrayList<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            // Remove elements not within the sliding window
+            if (!deque.isEmpty() && deque.getFirst() < i - k + 1) {
+                deque.pollFirst();
+            }
+
+            // Maintain elements in the deque in decreasing order
+            while (!deque.isEmpty() && nums[deque.getLast()] < nums[i]) {
+                deque.pollLast();
+            }
+
+            // Add current element's index at the back of the deque
+            deque.addLast(i);
+
+            // The element at the front of the deque is the largest element of
+            // the current sliding window, so add it to the result list
+            if (i >= k - 1) {
+                result.add(nums[deque.getFirst()]);
+            }
+        }
+
+        // Convert result list to array
+        int[] resArray = new int[result.size()];
+        for (int i = 0; i < result.size(); i++) {
+            resArray[i] = result.get(i);
+        }
+
+        return resArray;
+    }
+}
