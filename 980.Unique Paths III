@@ -1,0 +1,43 @@
+class Solution {
+    public int uniquePathsIII(int[][] grid) {
+        
+        int p1=-1;
+        int p2=-1;
+        int blk=0;
+   int my=0;
+        for(int i=0;i<grid.length;i++){
+            for(int j=0;j<grid[0].length;j++){
+                if(grid[i][j]==1)
+                    {
+                        p1=i;
+                        p2=j;
+                    }
+                if(grid[i][j]==0)
+                    blk++;
+            }
+           
+           
+
+        }
+        my= ans( p1,p2, blk, grid);
+        return my;
+    }
+        
+        private int ans(int i,int j,int blk,int[][] grid){
+        if(i<0 || j<0 || i>=grid.length || j>=grid[0].length || grid[i][j]==-1)
+             return 0;
+        else if(grid[i][j]==2)
+               return (blk==-1 )? 1:0;
+        else{
+            grid[i][j]=-1;
+            blk--;
+            int total=ans(i-1,j,blk,grid)+ans(i,j-1,blk,grid)+ans(i,j+1,blk,grid)+ans(i+1,j,blk,grid);
+            blk++;
+            grid[i][j]=0;
+            return total;
+        }
+        
+    
+
+}
+}
