@@ -1,0 +1,19 @@
+class Solution {
+    public int trap(int[] height) {
+      for(int i=1;i<height.length-1;i++){
+        int[] leftarray=new int[i];
+        int[] rightarray=new int[height.length-i];
+        for(int j=0;j<i;j++){
+            leftarray[j]=height[j];
+        }
+        int z=0;
+        for(int j=i;j<height.length;j++){
+            rigtharray[z++]=height[j];
+        }
+        Arrays.sort(leftarray);
+        int leftmax=leftarray[leftarray.lenght-1];
+        Arrays.sort(rightarray);
+        int rightmax=rightarray(rigtharray.)
+      }   
+    }
+}
